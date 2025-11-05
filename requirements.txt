@@ -20,3 +20,4 @@ langchain_core
 fastapi
 langserve
 sse_starlette
+streamlit
