@@ -27,8 +27,20 @@ class LoadStreamlitUI:
                 if not self.user_controls["GROQ_API_KEY"]:
                     st.warning("pls enter a valid api key")
 
+            if self.user_controls["Selected_llm"]=="OpenAI":
+                model_options=self.config.get_openai_model_options()
+                self.user_controls["selected_openai_model"]=st.selectbox("Select Model",model_options)
+                self.user_controls["OPENAI_API_KEY"] = st.session_state["OPENAI_API_KEY"]=st.text_input("API Key", type="password")
+
+                if not self.user_controls["OPENAI_API_KEY"]:
+                    st.warning("pls enter a valid api key")
+
             ##usecase selection
             self.user_controls["selected_usecase"]=st.selectbox("Selected_usecase",usecase_options)
+
+            if self.user_controls["selected_usecase"]=="chatbot with web":
+                os.environ["TAVILY_API_KEY"]=self.user_controls["TAVILY_API_KEY"] = st.session_state["TAVILY_API_KEY"]=st.text_input("TAVILY_API_Key", type="password")
+
             
         return self.user_controls
 

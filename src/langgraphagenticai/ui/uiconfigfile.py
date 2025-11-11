@@ -19,6 +19,9 @@ class config:
     def get_page_title(self):
         return self.config["DEFAULT"].get("PAGE_TITLE")
     
+    def get_openai_model_options(self):
+        return self.config["DEFAULT"].get("OpenAI_MODEL_OPTIONS").split(", ")
+    
     
     
     
